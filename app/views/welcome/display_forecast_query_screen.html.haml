@@ -1,0 +1,12 @@
+%h1
+  Forecast query screen
+%form{:action => '/welcome/display_forecast_result'}
+  %label{:for => :zip_code_field_id} Zip Code:
+  %input{:type => :text, :name => :zip_code_field_name, :id => :zip_code_field_id }
+  %button{:type => "submit", :name => :button, :value => 'by_zip_code'} Submit Request
+  %p
+  %label{:for => :city_selector_id} City/State:
+  %select{:name => :city_state }
+    - @sorted_state_lat_lon.each do |x|
+      %option{:value => "#{x[1]}" } "#{x[0]}"
+  %button{:type => "submit", :name => :button, :value => 'by_city_state'} Submit Request

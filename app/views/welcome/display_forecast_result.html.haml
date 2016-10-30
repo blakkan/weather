@@ -1,0 +1,22 @@
+%h1
+  Forecast results
+%p
+%h3
+  Latitude and Longitude
+= @lat_long
+%p
+%h3
+  Weather Forecast
+%p
+%table.table_style
+  %thead
+    %tr
+      %th Start time
+      %th Max temp
+      %th Min temp
+      %th Weather
+  %tbody
+    -@table_data.each do |row|
+      %tr
+        -row.each do |col|
+          %td= col
