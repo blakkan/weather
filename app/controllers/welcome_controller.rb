@@ -40,7 +40,12 @@ class WelcomeController < ApplicationController
       URI('http://graphical.weather.gov/xml/sample_products/browser_interface/ndfdXMLclient.php')
 
     if params['button'] == 'by_zip_code'
-      noaa_params = { 'listZipCodeList' => [params[:zip_code_field_name]]}
+
+      if params[:zip_code_field_name] !~ /^\s*\d{5}\s*$/
+        @error_message = "Bad Zipcode format"
+        render :simple_error and return
+      end
+      noaa_params = { 'listZipCodeList' => [params[:zip_code_field_name].strip]}
       uri.query = URI.encode_www_form(noaa_params)
       res = Net::HTTP.get_response(uri)
 
