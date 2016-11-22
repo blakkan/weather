@@ -44,11 +44,12 @@ weathers = context.xpath("//data/parameters/weather/weather-conditions/@weather-
 
 prob_precip_24_hr = []
 for idx, val in enumerate(prob_precip_12_hr):
-    localVal = val
-    if localVal.isdigit():  #Done at the end of list; have a nil value from NOAA there.
-      if idx % 2 == 1: #if odd index, emit.  And yes, we lose the last one if it's an odd number.  This is OK.
+    if not(val is None):
+      localVal = val
+      if localVal.isdigit():  #Done at the end of list; have a nil value from NOAA there.
+        if idx % 2 == 1: #if odd index, emit.  And yes, we lose the last one if it's an odd number.  This is OK.
           prob_precip_24_hr.append( str(max(int(val), int(pairmax))) )
-      else:
+        else:
           pairmax = val
 
 
