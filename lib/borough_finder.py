@@ -190,14 +190,18 @@ brooklyn_poly = mplPath.Path(np.array([
         ]))
 
 
+lat = float(sys.argv[1])
+long = float(sys.argv[2])
+
+point = (lat, long)
     
-if staten_poly.contains_point(sys.argv[1], sys.argv[2]):
+if staten_poly.contains_point(point):
     print "In Staten Island"
-if manhattan_poly.contains_point(sys.argv[1], sys.argv[2]):
+if manhattan_poly.contains_point(point):
     print "In Manhattan"
-if bronx_poly.contains_point(sys.argv[1], sys.argv[2]):
+if bronx_poly.contains_point(point):
     print "In The Bronx"
-if queens_poly.contains_point(sys.argv[1], sys.argv[2]):
+if queens_poly.contains_point(point):
     print "In Queens"
-if brooklyn_poly.contains_point(sys.argv[1], sys.argv[2]):
+if brooklyn_poly.contains_point(point):
     print "In Brooklyn"
