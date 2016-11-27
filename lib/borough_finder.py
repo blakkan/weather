@@ -1,3 +1,4 @@
+#! /usr/bin/python
 import sys
 import numpy as np
 import matplotlib.path as mplPath
